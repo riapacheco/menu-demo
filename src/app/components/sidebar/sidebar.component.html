@@ -1,0 +1,36 @@
+<nav class="sidebar">
+  <div class="sidebar-content">
+    <a class="toggle-btn">
+      <span class="material-icons">
+        close
+      </span>
+    </a>
+
+    <div class="sections">
+
+      <!-- ------------------- This is where we bind the data -------------------- -->
+      <div
+        *ngFor="let section of sections;"
+        class="section">
+
+        <!--Section Title-->
+        <a href="" class="section-title">
+          {{ section.sectionHeading }}
+        </a>
+
+        <!-- ------------- This is where we access the nested content -------------- -->
+        <div
+          *ngFor="let sectionContent of section.sectionContents"
+          class="section-content">
+          <ul class="list-unstyled">
+            <li>
+              <a (click)="onTargetContentClick(sectionContent.target, $event)">
+                {{ sectionContent.title }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

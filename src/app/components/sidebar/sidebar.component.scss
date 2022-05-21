@@ -1,0 +1,87 @@
+@import '~@riapacheco/yutes/colors.scss';
+
+nav, .sidebar {
+  background-color: white;
+  border-radius: 0px 6px 6px 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 330px;
+  box-shadow: 8px 8px 18px #00000030;
+
+  .sidebar-content {
+    width: 100%;
+
+    // Full width button
+    .toggle-btn {
+      width: 100% !important;
+      height: 1.5rem;
+      padding-right: 0.4rem;
+
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: flex-end;
+
+      opacity: 0;
+
+      // Icon
+      span {
+        font-size: 0.99rem;
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+
+  // When hovering over sidebar menu
+  // Show the toggle button
+  &:hover {
+    .sidebar-content {
+      .toggle-btn {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// All sections
+.sections {
+  margin-left: 2rem;
+  margin-top: 2rem;
+
+  .section{
+    margin-bottom: 3rem;
+
+    // Section Title
+    .section-title {
+      font-size: 0.88rem;
+      line-height: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09rem;
+      font-weight: 600;
+
+      &:hover {
+        color: $secondary-medium-color;
+      }
+    }
+
+    // Listed items
+    .section-content {
+      ul {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+        li {
+          margin-bottom: 0.5rem;
+
+          a:hover {
+            color: $secondary-medium-color;
+          }
+        }
+      }
+    }
+  }
+}
