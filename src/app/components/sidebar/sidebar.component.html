@@ -1,8 +1,21 @@
-<nav class="sidebar">
+<nav
+  [@sidebarTrigger]="showsSidebar ? 'open' : 'close'"
+  class="sidebar">
   <div class="sidebar-content">
-    <a class="toggle-btn">
-      <span class="material-icons">
+    <a
+      (click)="showsSidebar = !showsSidebar"
+      class="toggle-btn">
+      <!--Shows Close Button when Sidebar is Open and if hovering-->
+      <span
+        *ngIf="showsSidebar"
+        class="material-icons close">
         close
+      </span>
+      <span
+        *ngIf="!showsSidebar"
+        class="material-icons"
+        style="opacity: 1 !important;">
+        menu
       </span>
     </a>
 
@@ -14,7 +27,7 @@
         class="section">
 
         <!--Section Title-->
-        <a href="" class="section-title">
+        <a (click)="onTargetContentClick(section.sectionTarget, $event)" class="section-title">
           {{ section.sectionHeading }}
         </a>
 
