@@ -14,6 +14,7 @@ nav, .sidebar {
     width: 100%;
 
     // Full width button
+    // Contains the icon, but uses flex-box to push to the right-side
     .toggle-btn {
       width: 100% !important;
       height: 1.5rem;
@@ -24,11 +25,16 @@ nav, .sidebar {
       align-items: center;
       justify-content: flex-end;
 
-      opacity: 0;
-
-      // Icon
       span {
         font-size: 0.99rem;
+        // IF the button icon has a <span> AND a `.close` class,
+        // THEN set its opacity to 0 [transparent]
+        &.close {
+          opacity: 0;
+        }
+
+        // IF the cursor hovers over the actual icon (not just the menu)
+        // THEN change the icon color
         &:hover {
           color: $secondary-color;
         }
@@ -36,12 +42,14 @@ nav, .sidebar {
     }
   }
 
-  // When hovering over sidebar menu
-  // Show the toggle button
+  // IF the cursor is hovering over the sidebar menu,
   &:hover {
     .sidebar-content {
       .toggle-btn {
-        opacity: 1;
+        // THEN change the toggle-btn's <span> element opacity: 0 to opacity: 1
+        span {
+          opacity: 1;
+        }
       }
     }
   }
