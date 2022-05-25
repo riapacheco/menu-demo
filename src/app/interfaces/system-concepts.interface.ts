@@ -1,4 +1,4 @@
-export interface sectionContents {
+export interface ISectionContents {
   title?: string;
   target?: string;
 }
@@ -6,5 +6,5 @@ export interface sectionContents {
 export interface ISystemConcepts {
   sectionHeading?: string;
   sectionTarget?: string;
-  sectionContents?: [ sectionContents ]
+  sectionContents?: ISectionContents[];
 }

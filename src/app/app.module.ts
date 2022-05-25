@@ -5,11 +5,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ArticleComponent } from './views/article/article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent
+    SidebarComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,

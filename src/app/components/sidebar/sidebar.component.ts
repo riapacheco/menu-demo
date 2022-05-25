@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+
+import { ISystemConcepts } from './../../interfaces/system-concepts.interface';
 
 @Component({
   selector: 'app-sidebar',
@@ -26,61 +28,9 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   ]
 })
 export class SidebarComponent implements OnInit {
-  showsSidebar = true;
-  sections = [
-    {
-      sectionHeading: 'The Evolving State of SE',
-      sectionTarget: 'theEvolvingStateOfSe',
-      sectionContents: [
-        {
-          title: 'Definitions and Terms',
-          target: 'definitionsAndTerms',
-        },
-        {
-          title: 'Root Cause Analysis',
-          target: 'rootCauseAnalysis',
-        },
-        {
-          title: 'Industry and Government',
-          target: 'industryAndGovernment',
-        },
-        {
-          title: 'Engineering Education',
-          target: 'engineeringEducation',
-        },
-        {
-          title: 'Chapter Exercises',
-          target: 'chapterExercises'
-        }
-      ]
-    },
-    {
-      sectionHeading: 'Attributes and Properties',
-      sectionTarget: 'attributesAndProperties',
-      sectionContents: [
-        {
-          title: 'Definitions and Terms',
-          target: 'defintionAndTerms',
-        },
-        {
-          title: 'User Roles and Missions',
-          target: 'userRolesAndMissions',
-        },
-        {
-          title: 'Defining User Missions',
-          target: 'definingUserMissions',
-        },
-        {
-          title: 'Problem, Opportunity, Solution',
-          target: 'problemOpportunitySolution',
-        },
-        {
-          title: 'Spaces',
-          target: 'spaces'
-        },
-      ]
-    }
-  ];
+  @Input() showsSidebar = true;
+  @Input() sections: ISystemConcepts[] = [];
+  @Output() onSelection = new EventEmitter<string>();
 
   constructor() { }
 
@@ -89,8 +39,8 @@ export class SidebarComponent implements OnInit {
 
   private closeSidebar() { this.showsSidebar = false; }
 
-  onTargetContentClick(targetString: string, event: Event) {
-    console.log(targetString);
+  onTargetContentClick(targetString: string | undefined, event: Event) {
+    this.onSelection.emit(targetString);
     this.closeSidebar();
   }
 

@@ -1,0 +1,29 @@
+<!--Child Component-->
+<app-sidebar
+  [showsSidebar]="showsTableOfContents"
+  [sections]="sections"
+  (onSelection)="onSelect($event)">
+</app-sidebar>
+
+<!-- Actual Article Content -->
+<div class="article-view">
+  <div
+    *ngFor="let section of sections"
+    class="section mt-5 mb-3">
+    <h1 id="{{section.sectionTarget}}">
+      {{ section.sectionHeading }}
+    </h1>
+
+    <div
+      *ngFor="let content of section.sectionContents"
+      class="section-items mt-3">
+      <h3 id="{{content.target}}">
+        {{ content.title }}
+      </h3>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime odio molestiae doloremque nulla facilis. Pariatur officiis repudiandae ab vero ratione? Sint illum rem error aliquam consectetur incidunt quo laborum. Neque!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit repellendus fugiat commodi impedit incidunt mollitia sed non dicta qui velit earum quos eligendi, eveniet porro labore dolore, fugit inventore alias.
+      </p>
+    </div>
+  </div>
+</div>
